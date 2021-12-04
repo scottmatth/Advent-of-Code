@@ -114,7 +114,7 @@ public class DataUtility {
             3690, 3676, 3681, 3684, 3683, 3697, 3684, 3694, 3693, 3692, 3698, 3723, 3719, 3745, 3754, 3755, 3762, 3769,
             3770);
 
-    public enum Positions {HORIZONTAL, VERTICAL};
+    public enum Positions {HORIZONTAL, AIM, VERTICAL};
 
     public static List<String> divePositions =
             Arrays.asList("forward 1", "forward 2", "down 5", "down 5", "down 4", "down 9", "up 6", "up 7", "down 2",
