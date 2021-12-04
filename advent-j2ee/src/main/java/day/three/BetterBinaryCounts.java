@@ -127,4 +127,52 @@ public class BetterBinaryCounts {
         }
         return result.toString();
     }
+
+    public int getLifeSupportRating() {
+        return Integer.parseInt(getOxygenGeneratorRating(),2) *
+               Integer.parseInt(getC02ScrubberRating(), 2);
+    }
+
+    public String getC02ScrubberRating() {
+        StringBuilder returnValue = new StringBuilder("");
+        if(this.binaryCount() == 1) {
+            returnValue.append(this.binariesAtThisLevel.get(0));
+        } else {
+            Optional<BitType> bitType = determineMinorValue()   ;
+            if(bitType.isPresent()) {
+                switch (bitType.get()) {
+                case ZERO:
+                    getZerosAtThisLevel().ifPresent(zeroCounts -> returnValue.append(zeroCounts.getC02ScrubberRating()));
+                    break;
+                case ONE:
+                    getOnesAtThisLevel().ifPresent(onesCounts -> returnValue.append(onesCounts.getC02ScrubberRating()));
+                }
+            } else {
+                getZerosAtThisLevel().ifPresent(zeroCounts -> returnValue.append(zeroCounts.getC02ScrubberRating()));
+            }
+        }
+        return returnValue.toString();
+
+    }
+
+    public String getOxygenGeneratorRating() {
+        StringBuilder returnValue = new StringBuilder("");
+        if(this.binaryCount() == 1) {
+            returnValue.append(this.binariesAtThisLevel.get(0));
+        } else {
+            Optional<BitType> bitType = determineMajorValue();
+            if(bitType.isPresent()) {
+                switch (bitType.get()) {
+                case ZERO:
+                    getZerosAtThisLevel().ifPresent(zeroCounts -> returnValue.append(zeroCounts.getOxygenGeneratorRating()));
+                    break;
+                case ONE:
+                    getOnesAtThisLevel().ifPresent(onesCounts -> returnValue.append(onesCounts.getOxygenGeneratorRating()));
+                }
+            } else {
+                getOnesAtThisLevel().ifPresent(zeroCounts -> returnValue.append(zeroCounts.getOxygenGeneratorRating()));
+            }
+        }
+        return returnValue.toString();
+    }
 }

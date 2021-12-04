@@ -37,10 +37,11 @@ public class DayThreeCalculating {
         Integer epsilon = Integer.parseInt(epsilonValue.toString(),2);
 
         //Part 1 value is 1997414
-        System.out.printf("Part 1: The gamma value is %s, the epsilon value is %s.  The power consumption is %s.\n",
-                gamma, epsilon, gamma*epsilon);
+        System.out.printf("Part 1: The gamma value is %s->Int: %s, the epsilon value is %s->Int: %s.  The power consumption is %s.\n",
+                gammaValue,gamma, epsilonValue,epsilon, gamma*epsilon);
 
-        System.out.printf("Part 1 better: The gamma value is %s, the epsilon value is %s.  The power consumption is %s.",
-                betterGamma, betterEpsilon, Integer.parseInt(betterGamma,2)*Integer.parseInt(betterEpsilon,2));
+        System.out.printf("Part 2: The Oxygen generator rating is %s, the CO2 Scubber rating is %s, the life support "
+                          + "rating is %s.", partTwoImpl.getOxygenGeneratorRating(), partTwoImpl.getC02ScrubberRating(),
+                partTwoImpl.getLifeSupportRating());
     }
 }
