@@ -27,8 +27,6 @@ public class DayTwoCalculating {
         }
 
         public void moveForward(int distance) {
-//            System.out.printf("Moving Forward: Old Horizontal is %s, increasing by %s\n",
-//                    divePositions.get(DataUtility.Positions.HORIZONTAL), distance);
             moveForward(distance, false);
         }
 
@@ -41,8 +39,6 @@ public class DayTwoCalculating {
         }
 
         public void moveUp(int distance) {
-//            System.out.printf("Moving Up: Old Vertical is %s, decreasing by %s\n",
-//                    divePositions.get(DataUtility.Positions.VERTICAL), distance);
             divePositions.merge(DataUtility.Positions.VERTICAL, -distance, Integer::sum);
         }
 
@@ -51,8 +47,6 @@ public class DayTwoCalculating {
         }
 
         public void moveDown(int distance) {
-//            System.out.printf("Moving Up: Old Vertical is %s, increasing by %s\n",
-//                    divePositions.get(DataUtility.Positions.VERTICAL), distance);
             divePositions.merge(DataUtility.Positions.VERTICAL, distance, Integer::sum);
         }
         public void moveDownWithAim(int distance) {
