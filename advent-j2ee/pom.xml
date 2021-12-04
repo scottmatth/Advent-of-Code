@@ -16,13 +16,13 @@
    <build>
       <pluginManagement>
          <plugins>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-site-plugin</artifactId>
-               <configuration>
-                  <unzipCommand>/usr/bin/unzip -o > err.txt</unzipCommand>
-               </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--               <groupId>org.apache.maven.plugins</groupId>-->
+<!--               <artifactId>maven-site-plugin</artifactId>-->
+<!--               <configuration>-->
+<!--                  <unzipCommand>/usr/bin/unzip -o > err.txt</unzipCommand>-->
+<!--               </configuration>-->
+<!--            </plugin>-->
          </plugins>
       </pluginManagement>
    </build>
@@ -49,6 +49,17 @@
             <artifactId>ejbs</artifactId>
             <version>1.0</version>
             <type>ejb</type>
+         </dependency>
+         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+         </dependency>
+
+         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
          </dependency>
       </dependencies>
    </dependencyManagement>
