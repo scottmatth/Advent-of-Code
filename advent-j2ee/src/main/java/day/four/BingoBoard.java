@@ -1,5 +1,6 @@
 package day.four;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -138,6 +139,31 @@ public class BingoBoard {
     }
 
     @Override
+    public String toString() {
+        StringBuffer results = new StringBuffer("BingoBoard{" +
+                   "boardXYSize=" + boardXYSize +
+                   ", boardCoordinates=" + boardCoordinates +
+                   ", boardState=" + boardState +
+                   "}\n\n");
+        for(int xAxis =1;xAxis<= boardXYSize;xAxis++) {
+            for(int yAxis=1;yAxis<= boardXYSize;yAxis++) {
+                results.append("| ");
+                BingoCell currentCell = this.boardCoordinates.get(Coordinate.quickMake(xAxis, yAxis));
+                if(currentCell.isCellMarked()) {
+                    results.append("+");
+                }
+                results.append(currentCell.cellValue);
+                if(currentCell.isCellMarked()) {
+                    results.append("+");
+                }
+                results.append(" |");
+            }
+            results.append("\n");
+        }
+        return results.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -199,6 +225,14 @@ public class BingoBoard {
         public int hashCode() {
             return new HashCodeBuilder(17, 37).append(xCoordinate).append(yCoordinate).toHashCode();
         }
+
+        @Override
+        public String toString() {
+            return "Coordinate{" +
+                   "xCoordinate=" + xCoordinate +
+                   ", yCoordinate=" + yCoordinate +
+                   '}';
+        }
     }
 
     public static class BingoCell {
@@ -234,7 +268,7 @@ public class BingoBoard {
         }
 
         public boolean hasValue(String testValue) {
-            return cellValue.equals(testValue);
+            return StringUtils.equals(cellValue,testValue);
         }
 
         @Override

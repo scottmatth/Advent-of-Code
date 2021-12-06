@@ -42,21 +42,38 @@ public class DayFourCalculating {
         }
 
         List<BingoBoard> winningBoards = new ArrayList<>();
-        String winningNumber = "";
+
+        BingoBoard lastboard = null;
+        String firstWinningNumber = "";
+        String lastWinningNumber = "";
         for (String callNumber : dataInput) {
             for (BingoBoard bingoBoard : bingoBoards) {
+                if(bingoBoard.getBoardState() == BingoBoard.BoardState.WINNER) {
+                    continue;
+                }
                 BingoBoard.BoardState boardState = bingoBoard.addCalledNumber(callNumber);
                 if(boardState == BingoBoard.BoardState.WINNER) {
                     winningBoards.add(bingoBoard);
-
                 }
             }
-            if(CollectionUtils.isNotEmpty(winningBoards)) {
-                winningNumber = callNumber;
+            if(winningBoards.size() == 1) {
+                firstWinningNumber = callNumber;
+            }
+            if(winningBoards.size() == dataInput.length) {
+                lastboard = winningBoards.get(winningBoards.size()-1);
+                lastWinningNumber = callNumber;
                 break;
             }
         }
-        System.out.printf("The winning number is %s.  The winning board value is %s", winningNumber,
-                winningBoards.get(0).calculateRemainingBoardValue()*Integer.parseInt(winningNumber));
+        assert lastboard != null;
+        System.out.printf("The winning number is %s.  The winning board value is %s." , firstWinningNumber,
+                winningBoards.get(0).calculateRemainingBoardValue()*Integer.parseInt(firstWinningNumber));
+
+        System.out.println("The winning board layout is\n"+winningBoards.get(0).toString());
+
+        System.out.printf("  The last called number is %s.  The last winning board value is %s.",
+                lastWinningNumber, lastboard.calculateRemainingBoardValue()*Integer.parseInt(lastWinningNumber));
+
+        System.out.println("The Last board layout is\n"+winningBoards.get(0).toString());
     }
 }
