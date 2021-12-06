@@ -132,6 +132,11 @@ public class BingoBoard {
         }
     }
 
+    public Integer calculateRemainingBoardValue() {
+        return boardCoordinates.entrySet().stream().map(Map.Entry::getValue).filter(bingoCell -> !bingoCell.isCellMarked())
+                .reduce(0, (integer, bingoCell) -> integer + (bingoCell.getIntCellValue()),Integer::sum);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -209,6 +214,10 @@ public class BingoBoard {
 
         public String getCellValue() {
             return cellValue;
+        }
+
+        public int getIntCellValue() {
+            return Integer.parseInt(cellValue);
         }
 
         public void setCellValue(String cellValue) {

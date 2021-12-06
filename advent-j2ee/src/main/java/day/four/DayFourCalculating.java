@@ -56,6 +56,7 @@ public class DayFourCalculating {
                 break;
             }
         }
-        System.out.printf("The winning number is %s", winningNumber);
+        System.out.printf("The winning number is %s.  The winning board value is %s", winningNumber,
+                winningBoards.get(0).calculateRemainingBoardValue()*Integer.parseInt(winningNumber));
     }
 }
