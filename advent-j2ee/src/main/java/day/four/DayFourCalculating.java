@@ -14,7 +14,7 @@ public class DayFourCalculating {
 
         List<String> dataLines = DataUtility.loadTestDataFile("bingoDataInput.txt");
 
-        String[] dataInput = dataLines.get(0).split(" ");
+        String[] dataInput = dataLines.get(0).split(",");
 
         List<BingoBoard> bingoBoards = new ArrayList<>();
 
@@ -22,17 +22,17 @@ public class DayFourCalculating {
 
         while(beginningBoardIndex < dataLines.size()) {
             String beginingBoardDefinition = dataLines.get(beginningBoardIndex);
-            String[] boardRow1Data = beginingBoardDefinition.split(" ");
+            String[] boardRow1Data = beginingBoardDefinition.trim().split("(\\s)+");
 
             BingoBoard board = new BingoBoard(boardRow1Data.length);
             board.addRowOfData(1, Arrays.asList(boardRow1Data));
 
             List<String> restOfBoard =
-                    dataLines.subList(beginningBoardIndex + 1, beginningBoardIndex + boardRow1Data.length - 1);
+                    dataLines.subList(beginningBoardIndex + 1, beginningBoardIndex + boardRow1Data.length );
 
             int rowCounter = 2;
             for (String boardRow : restOfBoard) {
-                String[] rowData = boardRow.split(" ");
+                String[] rowData = boardRow.trim().split("(\\s)+");
                 board.addRowOfData(rowCounter, Arrays.asList(rowData));
                 rowCounter++;
             }
@@ -48,10 +48,12 @@ public class DayFourCalculating {
                 BingoBoard.BoardState boardState = bingoBoard.addCalledNumber(callNumber);
                 if(boardState == BingoBoard.BoardState.WINNER) {
                     winningBoards.add(bingoBoard);
+
                 }
             }
             if(CollectionUtils.isNotEmpty(winningBoards)) {
                 winningNumber = callNumber;
+                break;
             }
         }
         System.out.printf("The winning number is %s", winningNumber);

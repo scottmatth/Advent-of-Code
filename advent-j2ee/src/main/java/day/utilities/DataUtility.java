@@ -3,18 +3,28 @@ package day.utilities;
 import day.four.DayFourCalculating;
 import org.apache.commons.io.IOUtils;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class DataUtility {
 
     public static List<String> loadTestDataFile(String filename) throws IOException {
-        Class<DataUtility> dataUtilityClass = DataUtility.class;
-        ClassLoader classLoader = dataUtilityClass.getClassLoader();
-        InputStream resourceAsStream = classLoader.getResourceAsStream("testData/" + filename);
-        return IOUtils.readLines(resourceAsStream);
+
+        String filePath = "/Users/scottmat/Development/Advent-of-Code/advent-j2ee/src/main/resources/testData";
+
+        BufferedReader br
+                = new BufferedReader(new FileReader(filePath+"/"+filename));
+        List<String> fileLines = new ArrayList<>();
+        String currentLine ;
+        while ((currentLine = br.readLine()) != null) {
+            fileLines.add(currentLine);
+        }
+        return fileLines;
     }
 
     public static List<Integer> temperatures = Arrays.asList(156, 153, 163, 168, 166, 164, 149, 187, 192, 194, 197, 199,

@@ -1,9 +1,11 @@
 package day.four;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class BingoBoard {
 
@@ -12,19 +14,13 @@ public class BingoBoard {
 
     private BoardState boardState;
 
-//    private final Map<String, Coordinate> coordinateByValue;
-
-    public String getCellValue(int i, int i1) {
-        return this.boardCoordinates.get(Coordinate.quickMake(i, i1)).cellValue;
-    }
-
     public BoardState getBoardState() {
         return boardState;
     }
 
     public void addRowOfData(int i, List<String> asList) {
         for(int column=1;column <= boardXYSize;column++) {
-            defineBoardValue(i,column, asList.get(column));
+            defineBoardValue(i,column, asList.get(column-1));
         }
     }
 
@@ -44,7 +40,6 @@ public class BingoBoard {
         this.boardXYSize = xySize;
         this.boardState = BoardState.IN_PLAY;
         this.boardCoordinates = new HashMap<>();
-//        this.coordinateByValue = new HashMap<>();
         for(int xidx=1;xidx<= this.boardXYSize;xidx++) {
             for(int yidx=1;yidx<= this.boardXYSize;yidx++) {
                 this.boardCoordinates.put(new Coordinate(xidx, yidx), new BingoCell());
@@ -132,7 +127,6 @@ public class BingoBoard {
         Coordinate currentCoordinate = Coordinate.quickMake(xPosition, yPosition);
         if(this.boardCoordinates.containsKey(currentCoordinate)) {
             this.boardCoordinates.put(currentCoordinate,new BingoCell(positionValue));
-//            this.coordinateByValue.put(positionValue,currentCoordinate);
         } else {
             throw new RuntimeException("The cordinates "+xPosition+"::"+yPosition+" is not defined on the board");
         }
@@ -143,19 +137,20 @@ public class BingoBoard {
         if (this == o) {
             return true;
         }
+
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         BingoBoard board = (BingoBoard) o;
-        return boardXYSize == board.boardXYSize && Objects.equals(boardCoordinates, board.boardCoordinates)
-               && boardState == board.boardState
-//               && Objects.equals(coordinateByValue, board.coordinateByValue)
-                ;
+
+        return new EqualsBuilder().append(boardXYSize, board.boardXYSize)
+                .append(boardCoordinates, board.boardCoordinates).append(boardState, board.boardState).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(boardXYSize, boardCoordinates);
+        return new HashCodeBuilder(17, 37).append(boardXYSize).append(boardCoordinates).append(boardState).toHashCode();
     }
 
     public static class Coordinate {
@@ -184,16 +179,20 @@ public class BingoBoard {
             if (this == o) {
                 return true;
             }
+
             if (o == null || getClass() != o.getClass()) {
                 return false;
             }
+
             Coordinate that = (Coordinate) o;
-            return xCoordinate == that.xCoordinate && yCoordinate == that.yCoordinate;
+
+            return new EqualsBuilder().append(xCoordinate, that.xCoordinate)
+                    .append(yCoordinate, that.yCoordinate).isEquals();
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(xCoordinate, yCoordinate);
+            return new HashCodeBuilder(17, 37).append(xCoordinate).append(yCoordinate).toHashCode();
         }
     }
 
@@ -234,16 +233,20 @@ public class BingoBoard {
             if (this == o) {
                 return true;
             }
+
             if (o == null || getClass() != o.getClass()) {
                 return false;
             }
+
             BingoCell bingoCell = (BingoCell) o;
-            return cellMarked == bingoCell.cellMarked && Objects.equals(cellValue, bingoCell.cellValue);
+
+            return new EqualsBuilder().append(cellMarked, bingoCell.cellMarked)
+                    .append(cellValue, bingoCell.cellValue).isEquals();
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(cellValue, cellMarked);
+            return new HashCodeBuilder(17, 37).append(cellValue).append(cellMarked).toHashCode();
         }
     }
 }
