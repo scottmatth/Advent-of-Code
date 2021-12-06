@@ -1,4 +1,4 @@
-<project>
+<project xmlns:pom="http://maven.apache.org/POM/4.0.0">
    <modelVersion>4.0.0</modelVersion>
    <groupId>root</groupId>
    <version>1.0</version>
@@ -8,6 +8,16 @@
          <artifactId>testng</artifactId>
          <version>RELEASE</version>
          <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-collections4</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>commons-io</groupId>
+         <artifactId>commons-io</artifactId>
+         <version>2.7</version>
+         <type>jar</type>
       </dependency>
    </dependencies>
    <artifactId>project</artifactId>
@@ -77,12 +87,18 @@
                        JPA standard is to use settings in persistence.xml -->
                   <!-- <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor> -->
                </compilerArguments>
+               <showDeprecation>true</showDeprecation>
             </configuration>
          </plugin>
       </plugins>
    </build>
    <dependencyManagement>
       <dependencies>
+          <dependency>
+              <groupId>org.testng</groupId>
+              <artifactId>testng</artifactId>
+              <version>6.4</version>
+          </dependency>
          <dependency>
             <groupId>root.project.projects</groupId>
             <artifactId>logging</artifactId>
@@ -110,7 +126,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.1</version>
          </dependency>
-
          <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
@@ -119,7 +134,8 @@
          <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.1</version>
+            <version>4.4</version>
+            <type>jar</type>
          </dependency>
          <dependency>
             <groupId>org.mockito</groupId>
