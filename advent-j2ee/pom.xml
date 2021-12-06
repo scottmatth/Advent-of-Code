@@ -13,6 +13,15 @@
    <artifactId>project</artifactId>
    <packaging>pom</packaging>
    <name>project</name>
+   <repositories>
+      <!-- Maven central -->
+      <repository>
+         <id>MavenCentral</id>
+         <name>Maven Central</name>
+         <url>https://repo1.maven.org/maven2</url>
+      </repository>
+   </repositories>
+
    <modules>
       <module>projects</module>
       <module>primary-source</module>
@@ -64,7 +73,7 @@
                <source>1.8</source>
                <target>1.8</target>
                <compilerArguments>
-                  <!-- todo jmt Revisit JPA 2.1 Hibernate schemagen in WildFly 10+
+                  <!-- todo jmt Re visit JPA 2.1 Hibernate schemagen in WildFly 10+
                        JPA standard is to use settings in persistence.xml -->
                   <!-- <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor> -->
                </compilerArguments>
@@ -134,4 +143,15 @@
          <url>scp://local.company.com/websites/project.company.com/</url>
       </site>
    </distributionManagement>
+<!--   <resources>-->
+<!--      <resource>-->
+<!--         <directory>src/main/resources</directory>-->
+<!--&lt;!&ndash;         <filtering>true</filtering>&ndash;&gt;-->
+<!--&lt;!&ndash;         <includes>&ndash;&gt;-->
+<!--&lt;!&ndash;            <include>fileName.txt</include>&ndash;&gt;-->
+<!--&lt;!&ndash;         </includes>&ndash;&gt;-->
+
+<!--      </resource>-->
+<!--   </resources>-->
+
 </project>

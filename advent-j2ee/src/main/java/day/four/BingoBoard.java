@@ -1,6 +1,7 @@
 package day.four;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -19,6 +20,12 @@ public class BingoBoard {
 
     public BoardState getBoardState() {
         return boardState;
+    }
+
+    public void addRowOfData(int i, List<String> asList) {
+        for(int column=1;column <= boardXYSize;column++) {
+            defineBoardValue(i,column, asList.get(column));
+        }
     }
 
     public enum BoardState {
@@ -45,7 +52,7 @@ public class BingoBoard {
         }
     }
 
-    public void addCalledNumber(String number) {
+    public BoardState addCalledNumber(String number) {
         if(this.boardState == BoardState.IN_PLAY) {
             for (Map.Entry<Coordinate, BingoCell> coordinateBingoCellEntry : boardCoordinates.entrySet()) {
                 BingoCell value = coordinateBingoCellEntry.getValue();
@@ -58,6 +65,7 @@ public class BingoBoard {
             throw new RuntimeException("Should not add another called number because this Board is ");
         }
         checkForWinner();
+        return this.boardState;
     }
 
     public void checkForWinner() {

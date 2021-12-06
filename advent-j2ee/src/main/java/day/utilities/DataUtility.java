@@ -1,9 +1,22 @@
 package day.utilities;
 
+import day.four.DayFourCalculating;
+import org.apache.commons.io.IOUtils;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
 public class DataUtility {
+
+    public static List<String> loadTestDataFile(String filename) throws IOException {
+        Class<DataUtility> dataUtilityClass = DataUtility.class;
+        ClassLoader classLoader = dataUtilityClass.getClassLoader();
+        InputStream resourceAsStream = classLoader.getResourceAsStream("testData/" + filename);
+        return IOUtils.readLines(resourceAsStream);
+    }
+
     public static List<Integer> temperatures = Arrays.asList(156, 153, 163, 168, 166, 164, 149, 187, 192, 194, 197, 199,
             201, 210, 211, 196, 202, 203, 193, 199, 236, 240, 241, 251, 228, 226, 227, 256, 269, 270, 265, 271, 267,
             271, 247, 254, 259, 258, 269, 270, 269, 267, 289, 290, 288, 309, 307, 299, 309, 326, 329, 332, 335, 338,
