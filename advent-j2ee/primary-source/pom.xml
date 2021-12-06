@@ -18,14 +18,17 @@
    <build>
       <plugins>
          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.5.1</version>
             <configuration>
-               <encoding>iso-8859-1</encoding>
+               <encoding>UTF-8</encoding>
             </configuration>
          </plugin>
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.9</version>
             <configuration>
                <minmemory>128m</minmemory>
                <maxmemory>512m</maxmemory>

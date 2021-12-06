@@ -2,6 +2,14 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>root</groupId>
    <version>1.0</version>
+   <dependencies>
+      <dependency>
+         <groupId>org.testng</groupId>
+         <artifactId>testng</artifactId>
+         <version>RELEASE</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
    <artifactId>project</artifactId>
    <packaging>pom</packaging>
    <name>project</name>
@@ -11,18 +19,40 @@
       <module>servlets</module>
       <module>ejbs</module>
       <module>ear</module>
-      <module>site</module>
    </modules>
    <build>
       <pluginManagement>
          <plugins>
-<!--            <plugin>-->
-<!--               <groupId>org.apache.maven.plugins</groupId>-->
-<!--               <artifactId>maven-site-plugin</artifactId>-->
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-site-plugin</artifactId>
+               <version>3.2</version>
 <!--               <configuration>-->
 <!--                  <unzipCommand>/usr/bin/unzip -o > err.txt</unzipCommand>-->
 <!--               </configuration>-->
-<!--            </plugin>-->
+            </plugin>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <version>3.1</version>
+            </plugin>
+
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-surefire-plugin</artifactId>
+               <version>2.17</version>
+            </plugin>
+            <plugin>
+               <groupId>org.codehaus.mojo</groupId>
+               <artifactId>versions-maven-plugin</artifactId>
+               <version>2.1</version>
+            </plugin>
+            <plugin>
+               <groupId>org.codehaus.mojo</groupId>
+               <artifactId>build-helper-maven-plugin</artifactId>
+               <version>1.9</version>
+            </plugin>
+
          </plugins>
       </pluginManagement>
       <plugins>
@@ -69,13 +99,31 @@
          <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
+            <version>3.1</version>
          </dependency>
 
          <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
             <version>3.6.1</version>
+         </dependency>
+         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
+         </dependency>
+         <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+            <exclusions>
+               <!-- Uses an old hamcrest library incompatible with Arquillian -->
+               <exclusion>
+                  <groupId>org.hamcrest</groupId>
+                  <artifactId>hamcrest-core</artifactId>
+               </exclusion>
+            </exclusions>
          </dependency>
       </dependencies>
    </dependencyManagement>

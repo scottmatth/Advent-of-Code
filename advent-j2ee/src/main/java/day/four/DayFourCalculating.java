@@ -1,4 +1,4 @@
-package four;
+package day.four;
 
 public class DayFourCalculating {
 }

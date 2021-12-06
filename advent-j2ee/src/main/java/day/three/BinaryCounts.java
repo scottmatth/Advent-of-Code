@@ -1,4 +1,4 @@
-package three;
+package day.three;
 
 public class BinaryCounts {
 

@@ -1,6 +1,6 @@
-package three;
+package day.three;
 
-import utilities.DataUtility;
+import day.utilities.DataUtility;
 
 import java.util.Optional;
 import java.util.stream.Stream;

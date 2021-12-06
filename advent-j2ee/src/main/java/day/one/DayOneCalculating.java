@@ -1,6 +1,6 @@
-package one;
+package day.one;
 
-import utilities.DataUtility;
+import day.utilities.DataUtility;
 
 import java.util.Arrays;
 import java.util.List;

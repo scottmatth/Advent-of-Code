@@ -1,7 +1,6 @@
-package two;
+package day.two;
 
-import javafx.geometry.Pos;
-import utilities.DataUtility;
+import day.utilities.DataUtility;
 
 import java.util.HashMap;
 import java.util.Map;

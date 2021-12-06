@@ -1,4 +1,4 @@
-package utilities;
+package day.utilities;
 
 import java.util.Arrays;
 import java.util.List;
