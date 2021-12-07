@@ -23,7 +23,7 @@ public class OceanFloor {
             int beginning;
             int end;
             switch (direction) {
-           case VERTICAL:
+            case HORIZONTAL:
                if(coordinateOne.getyCoordinate() > coordinateTwo.getyCoordinate()) {
                    beginning = coordinateTwo.getyCoordinate();
                    end = coordinateOne.getyCoordinate();
@@ -38,7 +38,7 @@ public class OceanFloor {
 
                }
                break;
-           case HORIZONTAL:
+            case VERTICAL:
                if(coordinateOne.getxCoordinate() > coordinateTwo.getxCoordinate()) {
                    beginning = coordinateTwo.getxCoordinate();
                    end = coordinateOne.getxCoordinate();
@@ -51,9 +51,11 @@ public class OceanFloor {
                    ventPaths.putIfAbsent(Coordinate.create(coordinateOne.getyCoordinate(),yaxis),
                                    new VentPathPoint());
                    ventPaths.get(Coordinate.create(coordinateOne.getyCoordinate(),yaxis)).updatePathPoint();
-
                }
                break;
+            case DIAGONAL:
+
+                break;
            }
         }
     }
@@ -61,10 +63,15 @@ public class OceanFloor {
     public Direction determineDirection(Coordinate beginningCoordinate, Coordinate endCoordinate) {
         Direction discoveredDirection = Direction.OTHER;
         if(beginningCoordinate.getxCoordinate() == endCoordinate.getxCoordinate()) {
-            return Direction.VERTICAL;
+            discoveredDirection = Direction.HORIZONTAL;
         }
         if(beginningCoordinate.getyCoordinate() == endCoordinate.getyCoordinate()) {
-            return Direction.HORIZONTAL;
+            discoveredDirection = Direction.VERTICAL;
+        }
+
+        if(Math.abs(beginningCoordinate.getxCoordinate() - endCoordinate.getxCoordinate()) ==
+           (Math.abs(beginningCoordinate.getyCoordinate() - endCoordinate.getyCoordinate()))) {
+            discoveredDirection = Direction.DIAGONAL;
         }
 
         return discoveredDirection;
