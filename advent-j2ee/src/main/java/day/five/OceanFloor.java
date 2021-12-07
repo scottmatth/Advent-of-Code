@@ -18,63 +18,13 @@ public class OceanFloor {
     Map<Coordinate, VentPathPoint> ventPaths = new HashMap<>();
 
     public void addPath(Coordinate coordinateOne, Coordinate coordinateTwo) {
-        Direction direction = determineDirection(coordinateOne, coordinateTwo);
-        if(EnumSet.of(Direction.HORIZONTAL, Direction.VERTICAL).contains(direction )) {
-            int beginning;
-            int end;
-            switch (direction) {
-            case HORIZONTAL:
-               if(coordinateOne.getyCoordinate() > coordinateTwo.getyCoordinate()) {
-                   beginning = coordinateTwo.getyCoordinate();
-                   end = coordinateOne.getyCoordinate();
-               } else {
-                   beginning = coordinateOne.getyCoordinate();
-                   end = coordinateTwo.getyCoordinate();
-               }
-               for(int xaxis = beginning;xaxis<= end;xaxis++){
-                   ventPaths.putIfAbsent(Coordinate.create(xaxis, coordinateOne.getxCoordinate()),
-                                   new VentPathPoint());
-                   ventPaths.get(Coordinate.create(xaxis, coordinateOne.getxCoordinate())).updatePathPoint();
 
-               }
-               break;
-            case VERTICAL:
-               if(coordinateOne.getxCoordinate() > coordinateTwo.getxCoordinate()) {
-                   beginning = coordinateTwo.getxCoordinate();
-                   end = coordinateOne.getxCoordinate();
-               } else {
-                   beginning = coordinateOne.getxCoordinate();
-                   end = coordinateTwo.getxCoordinate();
-               }
+        List<Coordinate> coordinates = Coordinate.determinePointsInLine(coordinateOne, coordinateTwo);
 
-               for(int yaxis = beginning;yaxis<= end;yaxis++){
-                   ventPaths.putIfAbsent(Coordinate.create(coordinateOne.getyCoordinate(),yaxis),
-                                   new VentPathPoint());
-                   ventPaths.get(Coordinate.create(coordinateOne.getyCoordinate(),yaxis)).updatePathPoint();
-               }
-               break;
-            case DIAGONAL:
-
-                break;
-           }
+        for (Coordinate coordinate : coordinates) {
+            ventPaths.putIfAbsent(coordinate, new VentPathPoint());
+            ventPaths.get(coordinate).updatePathPoint();
         }
-    }
-
-    public Direction determineDirection(Coordinate beginningCoordinate, Coordinate endCoordinate) {
-        Direction discoveredDirection = Direction.OTHER;
-        if(beginningCoordinate.getxCoordinate() == endCoordinate.getxCoordinate()) {
-            discoveredDirection = Direction.HORIZONTAL;
-        }
-        if(beginningCoordinate.getyCoordinate() == endCoordinate.getyCoordinate()) {
-            discoveredDirection = Direction.VERTICAL;
-        }
-
-        if(Math.abs(beginningCoordinate.getxCoordinate() - endCoordinate.getxCoordinate()) ==
-           (Math.abs(beginningCoordinate.getyCoordinate() - endCoordinate.getyCoordinate()))) {
-            discoveredDirection = Direction.DIAGONAL;
-        }
-
-        return discoveredDirection;
     }
 
     public int countMultipleHits() {
