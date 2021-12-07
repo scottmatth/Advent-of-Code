@@ -17,27 +17,43 @@ public class OceanFloor {
 
     Map<Coordinate, VentPathPoint> ventPaths = new HashMap<>();
 
-    public void addPath(Coordinate beginningCoordinate, Coordinate endCoordinate) {
-        Direction direction = determineDirection(beginningCoordinate, endCoordinate);
+    public void addPath(Coordinate coordinateOne, Coordinate coordinateTwo) {
+        Direction direction = determineDirection(coordinateOne, coordinateTwo);
         if(EnumSet.of(Direction.HORIZONTAL, Direction.VERTICAL).contains(direction )) {
-           switch (direction) {
+            int beginning;
+            int end;
+            switch (direction) {
            case VERTICAL:
-               for(int xaxis = beginningCoordinate.getxCoordinate();xaxis<= endCoordinate.getxCoordinate();xaxis++){
-                   ventPaths.putIfAbsent(Coordinate.create(xaxis, beginningCoordinate.getyCoordinate()),
+               if(coordinateOne.getyCoordinate() > coordinateTwo.getyCoordinate()) {
+                   beginning = coordinateTwo.getyCoordinate();
+                   end = coordinateOne.getyCoordinate();
+               } else {
+                   beginning = coordinateOne.getyCoordinate();
+                   end = coordinateTwo.getyCoordinate();
+               }
+               for(int xaxis = beginning;xaxis<= end;xaxis++){
+                   ventPaths.putIfAbsent(Coordinate.create(xaxis, coordinateOne.getxCoordinate()),
                                    new VentPathPoint());
-                   ventPaths.get(Coordinate.create(xaxis, beginningCoordinate.getyCoordinate())).updatePathPoint();
+                   ventPaths.get(Coordinate.create(xaxis, coordinateOne.getxCoordinate())).updatePathPoint();
 
                }
                break;
            case HORIZONTAL:
-               for(int yaxis = beginningCoordinate.getyCoordinate();yaxis<= endCoordinate.getyCoordinate();yaxis++){
-                   ventPaths.putIfAbsent(Coordinate.create(beginningCoordinate.getxCoordinate(),yaxis),
+               if(coordinateOne.getxCoordinate() > coordinateTwo.getxCoordinate()) {
+                   beginning = coordinateTwo.getxCoordinate();
+                   end = coordinateOne.getxCoordinate();
+               } else {
+                   beginning = coordinateOne.getxCoordinate();
+                   end = coordinateTwo.getxCoordinate();
+               }
+
+               for(int yaxis = beginning;yaxis<= end;yaxis++){
+                   ventPaths.putIfAbsent(Coordinate.create(coordinateOne.getyCoordinate(),yaxis),
                                    new VentPathPoint());
-                   ventPaths.get(Coordinate.create(beginningCoordinate.getxCoordinate(),yaxis)).updatePathPoint();
+                   ventPaths.get(Coordinate.create(coordinateOne.getyCoordinate(),yaxis)).updatePathPoint();
 
                }
                break;
-
            }
         }
     }
@@ -55,6 +71,7 @@ public class OceanFloor {
     }
 
     public int countMultipleHits() {
+        System.out.printf("The number of path points are: %s\n", ventPaths.size());
         List<VentPathPoint> multipleHits =
                 ventPaths.values().stream().filter(ventPathPoint -> ventPathPoint.getIntCellValue() > 1).collect(
                         Collectors.toList());

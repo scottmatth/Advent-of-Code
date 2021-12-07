@@ -13,7 +13,7 @@ public class DayFiveCalculations {
 
         OceanFloor subPath = new OceanFloor();
         for (String coordinate : coordinates) {
-            String[] fromAndToPoints = coordinate.split("\\s->\\s");
+        String[] fromAndToPoints = coordinate.split("\\s->\\s");
             String[] beginning = fromAndToPoints[0].split(",");
             String[] end = fromAndToPoints[1].split(",");
 
@@ -23,8 +23,8 @@ public class DayFiveCalculations {
 
         int i = subPath.countMultipleHits();
 
-        System.out.printf("the number of Multiple hit points is %s", subPath.countMultipleHits());
-
+        // Part 1 answer is 5084
+        System.out.printf("the number of Multiple hit points is %s", i);
     }
 
 }
