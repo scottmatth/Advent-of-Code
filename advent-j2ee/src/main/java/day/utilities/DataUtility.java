@@ -17,8 +17,7 @@ public class DataUtility {
 
         String filePath = "/Users/scottmat/Development/Advent-of-Code/advent-j2ee/src/main/resources/testData";
 
-        BufferedReader br
-                = new BufferedReader(new FileReader(filePath+"/"+filename));
+        BufferedReader br = new BufferedReader(new FileReader(filePath+"/"+filename));
         List<String> fileLines = new ArrayList<>();
         String currentLine ;
         while ((currentLine = br.readLine()) != null) {
