@@ -1,7 +1,7 @@
-package day.five;
+package year2021.day.five;
 
-import day.utilities.Coordinate;
-import day.utilities.DataUtility;
+import year2021.day.utilities.Coordinate;
+import year2021.day.utilities.DataUtility;
 
 import java.io.IOException;
 import java.util.List;

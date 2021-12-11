@@ -1,6 +1,6 @@
-package day.five;
+package year2021.day.five;
 
-import day.utilities.Cell;
+import year2021.day.utilities.Cell;
 
 public class VentPathPoint extends Cell {
 

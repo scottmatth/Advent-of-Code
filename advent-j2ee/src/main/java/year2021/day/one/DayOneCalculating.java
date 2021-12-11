@@ -1,9 +1,6 @@
-package day.one;
+package year2021.day.one;
 
-import day.utilities.DataUtility;
-
-import java.util.Arrays;
-import java.util.List;
+import year2021.day.utilities.DataUtility;
 
 public class DayOneCalculating {
     public static void main(String[] args) {

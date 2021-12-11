@@ -1,6 +1,6 @@
-package day.two;
+package year2021.day.two;
 
-import day.utilities.DataUtility;
+import year2021.day.utilities.DataUtility;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,20 +1,14 @@
-package day.utilities;
+package year2021.day.utilities;
 
-import day.five.OceanFloor;
-import org.apache.commons.collections4.CollectionUtils;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
+import year2021.day.five.OceanFloor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.testng.Assert.*;
 
 public class CoordinateTest {
 

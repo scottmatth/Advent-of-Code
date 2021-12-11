@@ -1,12 +1,9 @@
-package day.six;
+package year2021.day.six;
 
-import day.utilities.DataUtility;
+import year2021.day.utilities.DataUtility;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DaySixCalculating {
     public static void main(String[] argv) throws IOException {

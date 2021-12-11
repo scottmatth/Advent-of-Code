@@ -1,13 +1,10 @@
-package day.utilities;
+package year2021.day.utilities;
 
-import day.five.OceanFloor;
-import day.five.VentPathPoint;
-import day.four.BingoBoard;
+import year2021.day.five.OceanFloor;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

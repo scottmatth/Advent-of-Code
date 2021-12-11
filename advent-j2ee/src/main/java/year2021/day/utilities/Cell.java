@@ -1,6 +1,5 @@
-package day.utilities;
+package year2021.day.utilities;
 
-import day.four.BingoBoard;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

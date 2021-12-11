@@ -1,10 +1,9 @@
-package day.five;
+package year2021.day.five;
 
-import day.utilities.Coordinate;
+import year2021.day.utilities.Coordinate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

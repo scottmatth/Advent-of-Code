@@ -1,4 +1,4 @@
-package day.three;
+package year2021.day.three;
 
 public class BinaryCounts {
 

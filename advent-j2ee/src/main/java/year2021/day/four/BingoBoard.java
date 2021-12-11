@@ -1,7 +1,7 @@
-package day.four;
+package year2021.day.four;
 
-import day.utilities.Cell;
-import day.utilities.Coordinate;
+import year2021.day.utilities.Cell;
+import year2021.day.utilities.Coordinate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 

@@ -1,12 +1,8 @@
-package day.utilities;
-
-import day.four.DayFourCalculating;
-import org.apache.commons.io.IOUtils;
+package year2021.day.utilities;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

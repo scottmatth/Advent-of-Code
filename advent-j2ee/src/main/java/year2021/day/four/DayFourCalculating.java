@@ -1,7 +1,6 @@
-package day.four;
+package year2021.day.four;
 
-import day.utilities.DataUtility;
-import org.apache.commons.collections4.CollectionUtils;
+import year2021.day.utilities.DataUtility;
 
 import java.io.IOException;
 import java.util.ArrayList;

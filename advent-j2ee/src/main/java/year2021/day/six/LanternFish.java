@@ -1,4 +1,4 @@
-package day.six;
+package year2021.day.six;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

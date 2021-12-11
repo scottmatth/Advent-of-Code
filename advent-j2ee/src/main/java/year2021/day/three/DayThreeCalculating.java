@@ -1,9 +1,8 @@
-package day.three;
+package year2021.day.three;
 
-import day.utilities.DataUtility;
+import year2021.day.utilities.DataUtility;
 
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public class DayThreeCalculating {
 
