@@ -1,10 +1,11 @@
 package day.six;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LanternFish {
-    private Integer daysTillSpawn;
+    private int daysTillSpawn;
     List<LanternFish> children = new ArrayList<>();
 
     public LanternFish(int initialYears) {
@@ -29,10 +30,10 @@ public class LanternFish {
         }
     }
 
-    public int countFish() {
+    public BigInteger countFish() {
 
-        Integer childrenCount = this.children.stream()
-                .reduce(0, (integer, lanternFish) -> integer + lanternFish.countFish(), Integer::sum);
-        return childrenCount + 1;
+        BigInteger childrenCount = this.children.stream()
+                .reduce(BigInteger.ZERO, (integer, lanternFish) -> integer.add(lanternFish.countFish()), BigInteger::add);
+        return childrenCount.add(BigInteger.ONE);
     }
 }
