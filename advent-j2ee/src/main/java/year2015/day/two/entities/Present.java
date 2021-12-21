@@ -31,20 +31,31 @@ public class Present {
         return height;
     }
 
-    public int WrappingSquareFootage() {
+    public int wrappingSquareFootage() {
         int baseDimensions = 2 * length * width + 2 * width * height + 2 * length * height;
 
-        List<Integer> orderedDimensions = new ArrayList<>();
-        orderedDimensions.add(length);
-        orderedDimensions.add(width);
-        orderedDimensions.add(height);
-
-        Collections.sort(orderedDimensions);
+        List<Integer> orderedDimensions = getOrderedDimentiones();
 
         Integer lowestDimention = orderedDimensions.get(0);
         Integer middleDimention = orderedDimensions.get(1);
 
         baseDimensions += lowestDimention * middleDimention;
         return baseDimensions;
+    }
+
+    public int ribbonNeeded () {
+        List<Integer> orderedDimentiones = getOrderedDimentiones();
+        return length * width * height +
+               (orderedDimentiones.get(0)+orderedDimentiones.get(0)+orderedDimentiones.get(1)+orderedDimentiones.get(1));
+    }
+
+    private List<Integer> getOrderedDimentiones() {
+        List<Integer> orderedDimensions = new ArrayList<>();
+        orderedDimensions.add(length);
+        orderedDimensions.add(width);
+        orderedDimensions.add(height);
+
+        Collections.sort(orderedDimensions);
+        return orderedDimensions;
     }
 }
